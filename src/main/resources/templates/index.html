@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="de" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mein Task Manager</title>
+
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+
+<body>
+
+<h1>Meine To-do-Liste</h1>
+
+<form action="/add" method="post" class="add-task-form">
+
+    <input type="text" name="title"
+           placeholder="Titel der Aufgabe" required>
+
+    <input type="text" name="description"
+           placeholder="Beschreibung">
+
+    <button type="submit">Hinzufügen</button>
+
+</form>
+
+<h2>Meine Aufgaben</h2>
+
+
+<div class="task-filters">
+    <a th:href="@{/(filter='all')}"
+       th:classappend="${filter == 'all'} ? 'active' : ''">
+        Alle
+    </a>
+
+    <a th:href="@{/(filter='open')}"
+       th:classappend="${filter == 'open'} ? 'active' : ''">
+        Offen
+    </a>
+
+    <a th:href="@{/(filter='done')}"
+       th:classappend="${filter == 'done'} ? 'active' : ''">
+        Erledigt
+    </a>
+</div>
+
+
+
+
+<ul class="task-list">
+    <li class="task-card" th:each="task : ${tasks}">
+
+
+        <div class="task-info">
+            <strong th:text="${task.title}"></strong>
+            <span th:text="${task.description}"></span>
+        </div>
+
+
+
+        <details>
+            <summary>✏️ Bearbeiten</summary>
+
+            <form th:action="@{/edit/{id}(id=${task.id})}"
+                  method="post">
+
+                <input type="text"
+                       name="title"
+                       th:value="${task.title}"
+                       required>
+
+                <input type="text"
+                       name="description"
+                       th:value="${task.description}">
+
+                <button type="submit">
+                    Änderungen speichern
+                </button>
+
+            </form>
+        </details>
+
+
+
+        <form th:action="@{/toggle/{id}(id=${task.id})}"
+              method="post"
+              style="display: inline;">
+
+            <input type="checkbox"
+                   th:checked="${task.completed}"
+                   onchange="this.form.submit()">
+
+        </form>
+
+
+
+        <form th:action="@{/delete/{id}(id=${task.id})}"
+              method="post">
+
+            <button type="submit">Löschen</button>
+
+        </form>
+
+    </li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f6fa;
+    color: #333;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+h1 {
+    color: #4056a1;
+    text-align: center;
+}
+
+h2 {
+    color: #333;
+}
+
+button {
+    background-color: #4056a1;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #304080;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+}
+
+.task-list {
+    list-style: none;
+    padding: 0;
+}
+
+.task-card {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.task-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.task-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+    min-width: 150px;
+}
+
+.task-info span {
+    color: #777;
+    font-size: 14px;
+}
+
+.task-card form {
+    margin: 0;
+}
+
+.task-card input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.task-card summary {
+    cursor: pointer;
+    color: #4056a1;
+}
+
+.add-task-form {
+    display: flex;
+    gap: 12px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.add-task-form input {
+    flex: 1;
+    min-width: 150px;
+    padding: 12px;
+}
+
+.add-task-form button {
+    padding: 12px 20px;
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    .add-task-form {
+        flex-direction: column;
+    }
+
+    .add-task-form input,
+    .add-task-form button {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+.task-filters {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.task-filters a {
+    text-decoration: none;
+    background-color: white;
+    color: #4056a1;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+.task-filters a:hover {
+    background-color: #4056a1;
+    color: white;
+}
+
+.task-filters a.active {
+    background-color: #4056a1;
+    color: white;
+    font-weight: bold;
+}
